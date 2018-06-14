@@ -1,3 +1,5 @@
+package com.app.honpaul.myrestaurants;
+
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
