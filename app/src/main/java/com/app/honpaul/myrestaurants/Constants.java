@@ -8,3 +8,4 @@ public class Constants {
     public static final String FIREBASE_CHILD_SEARCHED_LOCATION = "searchlocation";
     public static final String FIREBASE_CHILD_RESTAURANTS = "restaurants";
 }
+
