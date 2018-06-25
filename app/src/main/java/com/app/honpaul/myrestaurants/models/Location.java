@@ -2,16 +2,10 @@
 package com.app.honpaul.myrestaurants.models;
 
 import java.util.List;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
 
-public class Location implements Parcelable
-{
+public class Location {
 
     @SerializedName("address1")
     @Expose
@@ -37,33 +31,6 @@ public class Location implements Parcelable
     @SerializedName("display_address")
     @Expose
     private List<String> displayAddress = null;
-    public final static Parcelable.Creator<Location> CREATOR = new Creator<Location>() {
-
-
-        @SuppressWarnings({
-            "unchecked"
-        })
-        public Location createFromParcel(Parcel in) {
-            return new Location(in);
-        }
-
-        public Location[] newArray(int size) {
-            return (new Location[size]);
-        }
-
-    }
-    ;
-
-    protected Location(Parcel in) {
-        this.address1 = ((String) in.readValue((String.class.getClassLoader())));
-        this.address2 = ((String) in.readValue((String.class.getClassLoader())));
-        this.address3 = ((String) in.readValue((String.class.getClassLoader())));
-        this.city = ((String) in.readValue((String.class.getClassLoader())));
-        this.zipCode = ((String) in.readValue((String.class.getClassLoader())));
-        this.country = ((String) in.readValue((String.class.getClassLoader())));
-        this.state = ((String) in.readValue((String.class.getClassLoader())));
-        in.readList(this.displayAddress, (java.lang.String.class.getClassLoader()));
-    }
 
     /**
      * No args constructor for use in serialization
@@ -157,38 +124,6 @@ public class Location implements Parcelable
 
     public void setDisplayAddress(List<String> displayAddress) {
         this.displayAddress = displayAddress;
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(displayAddress).append(zipCode).append(state).append(address1).append(address2).append(address3).append(country).append(city).toHashCode();
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-        if ((other instanceof Location) == false) {
-            return false;
-        }
-        Location rhs = ((Location) other);
-        return new EqualsBuilder().append(displayAddress, rhs.displayAddress).append(zipCode, rhs.zipCode).append(state, rhs.state).append(address1, rhs.address1).append(address2, rhs.address2).append(address3, rhs.address3).append(country, rhs.country).append(city, rhs.city).isEquals();
-    }
-
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(address1);
-        dest.writeValue(address2);
-        dest.writeValue(address3);
-        dest.writeValue(city);
-        dest.writeValue(zipCode);
-        dest.writeValue(country);
-        dest.writeValue(state);
-        dest.writeList(displayAddress);
-    }
-
-    public int describeContents() {
-        return  0;
     }
 
 }

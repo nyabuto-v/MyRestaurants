@@ -2,16 +2,10 @@
 package com.app.honpaul.myrestaurants.models;
 
 import java.util.List;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
 
-public class Restaurant implements Parcelable
-{
+public class Restaurant {
 
     @SerializedName("id")
     @Expose
@@ -61,41 +55,6 @@ public class Restaurant implements Parcelable
     @SerializedName("distance")
     @Expose
     private Double distance;
-    public final static Parcelable.Creator<Restaurant> CREATOR = new Creator<Restaurant>() {
-
-
-        @SuppressWarnings({
-            "unchecked"
-        })
-        public Restaurant createFromParcel(Parcel in) {
-            return new Restaurant(in);
-        }
-
-        public Restaurant[] newArray(int size) {
-            return (new Restaurant[size]);
-        }
-
-    }
-    ;
-
-    protected Restaurant(Parcel in) {
-        this.id = ((String) in.readValue((String.class.getClassLoader())));
-        this.alias = ((String) in.readValue((String.class.getClassLoader())));
-        this.name = ((String) in.readValue((String.class.getClassLoader())));
-        this.imageUrl = ((String) in.readValue((String.class.getClassLoader())));
-        this.isClosed = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
-        this.url = ((String) in.readValue((String.class.getClassLoader())));
-        this.reviewCount = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        in.readList(this.categories, (com.app.honpaul.myrestaurants.models.Category.class.getClassLoader()));
-        this.rating = ((Double) in.readValue((Double.class.getClassLoader())));
-        this.coordinates = ((Coordinates) in.readValue((Coordinates.class.getClassLoader())));
-        in.readList(this.transactions, (java.lang.Object.class.getClassLoader()));
-        this.price = ((String) in.readValue((String.class.getClassLoader())));
-        this.location = ((Location) in.readValue((Location.class.getClassLoader())));
-        this.phone = ((String) in.readValue((String.class.getClassLoader())));
-        this.displayPhone = ((String) in.readValue((String.class.getClassLoader())));
-        this.distance = ((Double) in.readValue((Double.class.getClassLoader())));
-    }
 
     /**
      * No args constructor for use in serialization
@@ -269,46 +228,6 @@ public class Restaurant implements Parcelable
 
     public void setDistance(Double distance) {
         this.distance = distance;
-    }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(transactions).append(phone).append(location).append(imageUrl).append(alias).append(url).append(displayPhone).append(id).append(distance).append(price).append(reviewCount).append(name).append(categories).append(rating).append(isClosed).append(coordinates).toHashCode();
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-        if ((other instanceof Restaurant) == false) {
-            return false;
-        }
-        Restaurant rhs = ((Restaurant) other);
-        return new EqualsBuilder().append(transactions, rhs.transactions).append(phone, rhs.phone).append(location, rhs.location).append(imageUrl, rhs.imageUrl).append(alias, rhs.alias).append(url, rhs.url).append(displayPhone, rhs.displayPhone).append(id, rhs.id).append(distance, rhs.distance).append(price, rhs.price).append(reviewCount, rhs.reviewCount).append(name, rhs.name).append(categories, rhs.categories).append(rating, rhs.rating).append(isClosed, rhs.isClosed).append(coordinates, rhs.coordinates).isEquals();
-    }
-
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(id);
-        dest.writeValue(alias);
-        dest.writeValue(name);
-        dest.writeValue(imageUrl);
-        dest.writeValue(isClosed);
-        dest.writeValue(url);
-        dest.writeValue(reviewCount);
-        dest.writeList(categories);
-        dest.writeValue(rating);
-        dest.writeValue(coordinates);
-        dest.writeList(transactions);
-        dest.writeValue(price);
-        dest.writeValue(location);
-        dest.writeValue(phone);
-        dest.writeValue(displayPhone);
-        dest.writeValue(distance);
-    }
-
-    public int describeContents() {
-        return  0;
     }
 
 }
